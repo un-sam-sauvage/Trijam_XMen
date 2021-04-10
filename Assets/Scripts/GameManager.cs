@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     public Vector2 screenBounds;
 
+    public GameObject panelDeath;
+    
     public static GameManager Instance;
     private void Awake()
     {
@@ -88,5 +90,10 @@ public class GameManager : MonoBehaviour
                 Debug.LogWarning($"Mauvais chiffre {side}");
                 break;
         }
+    }
+
+    public void DeathPlayer()
+    {
+        panelDeath.SetActive(true);
     }
 }
