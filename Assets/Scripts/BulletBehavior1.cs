@@ -10,15 +10,14 @@ public class BulletBehavior1 : MonoBehaviour,IPooledObject
     private float _saveBulletSpeed;
     private Vector3 _direction;
 
-    
-    
-    
+
     private void Start()
     {
         _saveBulletSpeed = bulletSpeed;
         _gm = GameManager.Instance;
+        
         BulletTime.instance.startBulletTimeEvent.AddListener(StartBulletTime);
-        BulletTime.instance.startBulletTimeEvent.AddListener(StopBulletTime);
+        BulletTime.instance.stopBulletTimeEvent.AddListener(StopBulletTime);
     }
     
 
@@ -40,8 +39,10 @@ public class BulletBehavior1 : MonoBehaviour,IPooledObject
         if (Input.GetMouseButtonDown (0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 10);
+            
 
-            if (Physics2D.Raycast(ray.origin, ray.direction * 10) && isDragable)
+            if (hit && isDragable && hit.collider.gameObject == gameObject)
             {
                 isDragging = true;
             }
@@ -55,7 +56,7 @@ public class BulletBehavior1 : MonoBehaviour,IPooledObject
         if (isDragging)
         {
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = pos;
+            gameObject.transform.position = pos;
         }
     }
    
@@ -63,6 +64,9 @@ public class BulletBehavior1 : MonoBehaviour,IPooledObject
 
     public void StartBulletTime()
     {
+        Debug.Log("Start bullet time event");
+        
+        
         bulletSpeed = bulletReducSpeed;
         isDragable = true;
     }
@@ -70,6 +74,9 @@ public class BulletBehavior1 : MonoBehaviour,IPooledObject
     
     public void StopBulletTime()
     {
+        Debug.Log("Stop bullet time event");
+        
+        
         bulletSpeed = _saveBulletSpeed;
         isDragable = false;
     }
