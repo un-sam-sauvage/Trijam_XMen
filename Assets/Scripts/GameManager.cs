@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public Vector2 screenBounds;
 
     public GameObject panelDeath;
+
+    public bool isStarted;
+    public GameObject start, command;
     
     public static GameManager Instance;
     private void Awake()
@@ -62,6 +65,21 @@ public class GameManager : MonoBehaviour
             SpawnBullet(Random.Range(1,5), "Bullet1");
         }
         timerText.text = $"{timerScoreMin} : {scoreSec}";
+
+        if (!isStarted)
+        {
+            Time.timeScale = 0f;
+            if (Input.GetMouseButtonDown(0))
+            {
+                start.SetActive(false);
+                command.SetActive(false);
+                isStarted = true;
+            }
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
     }
 
     public void SpawnBullet(int side, string whichBullet)
