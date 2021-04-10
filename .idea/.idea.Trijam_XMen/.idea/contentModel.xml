@@ -11,6 +11,7 @@
           <e p="BulletBehavior1.cs" t="Include" />
           <e p="BulletBehavior2.cs" t="Include" />
           <e p="BulletTime.cs" t="Include" />
+          <e p="ButtonManager.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="IPooledObject.cs" t="Include" />
           <e p="ObjectPooler.cs" t="Include" />
