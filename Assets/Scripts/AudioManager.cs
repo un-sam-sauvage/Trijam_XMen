@@ -7,8 +7,16 @@ public class AudioManager : MonoBehaviour
     // tableau de sons
     public Sound[] sounds;
 
+    public static AudioManager instance;
+
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        
+        
         // Pour chaque son
         foreach (Sound sound in sounds)
         {
