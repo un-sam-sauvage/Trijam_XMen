@@ -130,6 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 205652495}
+  - component: {fileID: 205652496}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -151,6 +152,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &205652496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205652494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569aa38a2ff60214ba2718e8933de731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Music
+    clip: {fileID: 8300000, guid: 807b2b60a1128aa4095021c6f778806e, type: 3}
+    volume: 0.5
+    loop: 1
+    source: {fileID: 0}
+  - name: EnterBulletTime
+    clip: {fileID: 8300000, guid: 32af8c0af1b230543b8bfd7cbae664e1, type: 3}
+    volume: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: LeaveBulletTime
+    clip: {fileID: 8300000, guid: 9a68bf862c4d1414a9074e7a6206b907, type: 3}
+    volume: 0.5
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

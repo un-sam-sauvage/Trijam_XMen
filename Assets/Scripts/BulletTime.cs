@@ -41,11 +41,13 @@ public class BulletTime : MonoBehaviour
             {
                 isOn = true;
                 startBulletTimeEvent.Invoke();
+                AudioManager.instance.Play("EnterBulletTime");
             }
             else
             {
                 isOn = false;
                 stopBulletTimeEvent.Invoke();
+                AudioManager.instance.Play("LeaveBulletTime");
             }
         }
 
@@ -59,6 +61,7 @@ public class BulletTime : MonoBehaviour
             if (timer <= 0)
             {
                 stopBulletTimeEvent.Invoke();
+                AudioManager.instance.Play("LeaveBulletTime");
                 isOn = false;
             }
         }
