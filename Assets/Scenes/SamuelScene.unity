@@ -171,7 +171,7 @@ PrefabInstance:
     - target: {fileID: 9092073683496489689, guid: 4c9522e90f26a6148b1335c85250aa5c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9092073683496489689, guid: 4c9522e90f26a6148b1335c85250aa5c,
         type: 3}
@@ -511,6 +511,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grid
       objectReference: {fileID: 0}
+    - target: {fileID: 9218185957922691908, guid: a22434fa3d049a3409719d3f8c6a04c9,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a22434fa3d049a3409719d3f8c6a04c9, type: 3}
 --- !u!1001 &5993225198345395074
@@ -782,6 +787,26 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 160477309}
+    - target: {fileID: 8641359632106423763, guid: 97d76d0c1db9b9d41957be3fa6996192,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8641359632106423763, guid: 97d76d0c1db9b9d41957be3fa6996192,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8641359632106423763, guid: 97d76d0c1db9b9d41957be3fa6996192,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8641359632106423763, guid: 97d76d0c1db9b9d41957be3fa6996192,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
     - target: {fileID: 8706257727936293479, guid: 97d76d0c1db9b9d41957be3fa6996192,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

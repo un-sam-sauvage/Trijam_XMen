@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1f;
         if (Instance == null)
         {
             Instance = this;
@@ -89,14 +90,11 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
             if (Input.GetMouseButtonDown(0))
             {
+                Time.timeScale = 1f;
                 start.SetActive(false);
                 command.SetActive(false);
                 isStarted = true;
             }
-        }
-        else
-        {
-            Time.timeScale = 1f;
         }
     }
 
@@ -140,6 +138,7 @@ public class GameManager : MonoBehaviour
 
     public void DeathPlayer()
     {
+        Time.timeScale = 0f;
         panelDeath.SetActive(true);
     }
 }
