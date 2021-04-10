@@ -6,8 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     // tableau de sons
     public Sound[] sounds;
-    public AudioMixerGroup audioMixerGroup;
-    
+
     void Awake()
     {
         // Pour chaque son
@@ -20,7 +19,6 @@ public class AudioManager : MonoBehaviour
             sound.source.clip = sound.clip;
             sound.source.volume = sound.volume;
             sound.source.loop = sound.loop;
-            sound.source.outputAudioMixerGroup = audioMixerGroup;
         }
     }
 
