@@ -5,15 +5,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float movementSpeed;
-    private float saveMovementSpeed;
+    private float _saveMovementSpeed;
     
     // Start is called before the first frame update
     void Start()
     {
-        saveMovementSpeed = movementSpeed;
-        
-        GetComponent<BulletTime>().startBulletTimeEvent.AddListener(BulletTime);
-        GetComponent<BulletTime>().stopBulletTimeEvent.AddListener(StopBulletTime);
+        _saveMovementSpeed = movementSpeed;
+        BulletTime.instance.startBulletTimeEvent.AddListener(StartBulletTime);
+        BulletTime.instance.stopBulletTimeEvent.AddListener(StopBulletTime);
     }
 
     // Update is called once per frame
@@ -37,13 +36,13 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(dir * movementSpeed * Time.deltaTime);
     }
 
-    public void BulletTime()
+    public void StartBulletTime()
     {
         movementSpeed = 0f;
     }
 
     public void StopBulletTime()
     {
-        movementSpeed = saveMovementSpeed;
+        movementSpeed = _saveMovementSpeed;
     }
 }
