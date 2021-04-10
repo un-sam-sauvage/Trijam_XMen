@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class BulletTime : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class BulletTime : MonoBehaviour
 
     [HideInInspector] public UnityEvent startBulletTimeEvent;
     [HideInInspector] public UnityEvent stopBulletTimeEvent;
+
+    public Slider timerSlider;
 
     public static BulletTime instance;
 
@@ -35,6 +38,8 @@ public class BulletTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timerSlider.value = timer;
+        
         if (Input.GetButtonDown("BulletTime") && timer > 0)
         {
             if (!isOn)
