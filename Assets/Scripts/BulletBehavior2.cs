@@ -32,7 +32,7 @@ public class BulletBehavior2 : MonoBehaviour,IPooledObject
         transform.Translate(Vector3.right * Time.deltaTime* bulletSpeed);
         if (transform.position.x > _gm.screenBounds.x || transform.position.x < -_gm.screenBounds.x || transform.position.y > _gm.screenBounds.y || transform.position.y < -_gm.screenBounds.y)
         {
-            gameObject.SetActive(false);
+            DestroyImmediate(gameObject, true);
         }
         
         if (Input.GetMouseButtonDown (0))

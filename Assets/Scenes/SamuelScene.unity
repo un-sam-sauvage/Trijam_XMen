@@ -560,6 +560,18 @@ PrefabInstance:
       propertyPath: command
       value: 
       objectReference: {fileID: 1699495957}
+    - target: {fileID: 5993225196834166041, guid: fa88909781cf4d54883fca29970f415d,
+        type: 3}
+      propertyPath: Bullet2
+      value: 
+      objectReference: {fileID: 2335812049988397196, guid: bd10d9765ed0f0b4ab0042d7d9113b74,
+        type: 3}
+    - target: {fileID: 5993225196834166041, guid: fa88909781cf4d54883fca29970f415d,
+        type: 3}
+      propertyPath: Bullet1
+      value: 
+      objectReference: {fileID: 2335812049988397196, guid: 021a15803a199ae4c9c970b075e54439,
+        type: 3}
     - target: {fileID: 5993225196834166046, guid: fa88909781cf4d54883fca29970f415d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -641,7 +653,8 @@ PrefabInstance:
       propertyPath: pools.Array.data[0].size
       value: 20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5993225196834166047, guid: fa88909781cf4d54883fca29970f415d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fa88909781cf4d54883fca29970f415d, type: 3}
 --- !u!114 &5993225198345395075 stripped
 MonoBehaviour:
@@ -715,7 +728,7 @@ PrefabInstance:
     - target: {fileID: 8641359632078603410, guid: 97d76d0c1db9b9d41957be3fa6996192,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8641359632078603410, guid: 97d76d0c1db9b9d41957be3fa6996192,
         type: 3}
