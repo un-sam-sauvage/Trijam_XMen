@@ -54,13 +54,12 @@ public class PlayerMovement : MonoBehaviour
         movementSpeed = _saveMovementSpeed;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("touché");
         if (other.gameObject.CompareTag("Bullet"))
         {
             GameManager.Instance.DeathPlayer();
-            Time.timeScale = 0f;
         }
     }
 }
