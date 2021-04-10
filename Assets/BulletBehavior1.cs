@@ -4,10 +4,16 @@ public class BulletBehavior1 : MonoBehaviour,IPooledObject
 {
     private GameManager _gm;
     public float bulletSpeed;
+    public float bulletReducSpeed;
+    private float _saveBulletSpeed;
     private Vector3 _direction;
     private void Start()
     {
+        _saveBulletSpeed = bulletSpeed;
         _gm = GameManager.Instance;
+        BulletTime.instance.startBulletTimeEvent.AddListener(StartBulletTime);
+        BulletTime.instance.startBulletTimeEvent.AddListener(StopBulletTime);
+
     }
 
     public void OnObjectSpawn(Vector3 direction)
@@ -22,5 +28,15 @@ public class BulletBehavior1 : MonoBehaviour,IPooledObject
         {
             gameObject.SetActive(false);
         }
+    }
+
+    public void StartBulletTime()
+    {
+        bulletSpeed = bulletReducSpeed;
+    }
+    
+    public void StopBulletTime()
+    {
+        bulletSpeed = _saveBulletSpeed;
     }
 }

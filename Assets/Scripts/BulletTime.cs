@@ -13,10 +13,17 @@ public class BulletTime : MonoBehaviour
     [HideInInspector] public UnityEvent startBulletTimeEvent;
     [HideInInspector] public UnityEvent stopBulletTimeEvent;
 
+    public static BulletTime instance;
+
     void Awake()
     {
         startBulletTimeEvent = new UnityEvent();
         stopBulletTimeEvent = new UnityEvent();
+
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
     
     void Start()
