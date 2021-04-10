@@ -21,12 +21,15 @@ public class BulletBehavior2 : MonoBehaviour,IPooledObject
     public void OnObjectSpawn(Vector3 direction)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        gameObject.transform.LookAt(player.transform.position);
+        //gameObject.transform.LookAt(player.transform.position);
+        Vector3 dir = player.transform.position - transform.position;
+        float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     private void Update()
     {
-        transform.Translate(transform.forward * Time.deltaTime* bulletSpeed);
+        transform.Translate(Vector3.right * Time.deltaTime* bulletSpeed);
         if (transform.position.x > _gm.screenBounds.x || transform.position.x < -_gm.screenBounds.x || transform.position.y > _gm.screenBounds.y || transform.position.y < -_gm.screenBounds.y)
         {
             gameObject.SetActive(false);
