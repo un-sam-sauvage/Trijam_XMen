@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a548e374a33c44591d85401e5b0a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 2
+  bulletSpeed: 5
   bulletReducSpeed: 1
   isDragable: 0
   isDragging: 0

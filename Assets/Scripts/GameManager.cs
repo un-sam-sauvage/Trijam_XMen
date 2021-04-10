@@ -9,8 +9,11 @@ public class GameManager : MonoBehaviour
     public float timerScoreSec;
     public float timerScoreMin;
 
-    public int minSpawnTimeBullet;
-    public int maxSpawnTimeBullet;
+    public float minSpawnTimeBullet;
+    public float maxSpawnTimeBullet;
+    public int countdownBeforeGettingHarder = 3;
+
+    private float timerToSpawnBullet;
 
     public TextMeshProUGUI timerText;
 
@@ -24,6 +27,7 @@ public class GameManager : MonoBehaviour
     public GameObject start, command;
     
     public static GameManager Instance;
+
     private void Awake()
     {
         if (Instance == null)
@@ -35,9 +39,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.instance.Play("Music");
         screenBounds =
             Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         _objectPooler = ObjectPooler.instance;
+        SpawnBullet(Random.Range(1, 5), "Bullet1");
     }
 
     // Update is called once per frame
@@ -60,9 +66,21 @@ public class GameManager : MonoBehaviour
             timerScoreSec = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
+        timerText.text = $"{timerScoreMin} : {scoreSec}";
+
+        
+        timerToSpawnBullet -= Time.deltaTime;
+        if (timerToSpawnBullet <= 0)
         {
-            SpawnBullet(Random.Range(1,5), "Bullet1");
+            int whichBullet = Random.Range(0, 2);
+            if (whichBullet == 0)
+            {
+                SpawnBullet(Random.Range(1, 5), "Bullet1");
+            }
+            else
+            {
+                SpawnBullet(Random.Range(1, 5), "Bullet2");
+            }
         }
         timerText.text = $"{timerScoreMin} : {scoreSec}";
 
@@ -84,25 +102,35 @@ public class GameManager : MonoBehaviour
 
     public void SpawnBullet(int side, string whichBullet)
     {
+        timerToSpawnBullet = Random.Range(minSpawnTimeBullet, maxSpawnTimeBullet);
+        countdownBeforeGettingHarder--;
+        if (countdownBeforeGettingHarder <=0)
+        {
+            countdownBeforeGettingHarder = 3;
+            minSpawnTimeBullet -= .1f;
+            maxSpawnTimeBullet -= .1f;
+        }
         switch (side)
         {
             case 1:
                 _objectPooler.SpawnFromPool(whichBullet,
-                    new Vector3(Random.Range(-screenBounds.x, screenBounds.x), screenBounds.y, 0), quaternion.identity,Vector3.down);
+                    new Vector3(Random.Range(-screenBounds.x, screenBounds.x), screenBounds.y, 0), quaternion.identity,
+                    Vector3.down);
                 break;
             case 2:
                 _objectPooler.SpawnFromPool(whichBullet,
-                    new Vector3(screenBounds.x, Random.Range(-screenBounds.y, screenBounds.y), 0), quaternion.identity,Vector3.left);
+                    new Vector3(screenBounds.x, Random.Range(-screenBounds.y, screenBounds.y), 0), quaternion.identity,
+                    Vector3.left);
                 break;
             case 3:
                 _objectPooler.SpawnFromPool(whichBullet,
                     new Vector3(Random.Range(-screenBounds.x, screenBounds.x), -screenBounds.y, 0),
-                    quaternion.identity,Vector3.up);
+                    quaternion.identity, Vector3.up);
                 break;
             case 4:
                 _objectPooler.SpawnFromPool(whichBullet,
                     new Vector3(-screenBounds.x, Random.Range(-screenBounds.y, screenBounds.y), 0),
-                    quaternion.identity,Vector3.right);
+                    quaternion.identity, Vector3.right);
                 break;
             default:
                 Debug.LogWarning($"Mauvais chiffre {side}");
